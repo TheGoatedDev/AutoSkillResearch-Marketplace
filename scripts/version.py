@@ -8,6 +8,8 @@ def bump_patch(plugin_json_path: Path) -> str:
     data = json.loads(plugin_json_path.read_text())
     version = data.get("version", "1.0.0")
     parts = version.split(".")
+    while len(parts) < 3:
+        parts.append("0")
     parts[2] = str(int(parts[2]) + 1)
     new_version = ".".join(parts)
     data["version"] = new_version

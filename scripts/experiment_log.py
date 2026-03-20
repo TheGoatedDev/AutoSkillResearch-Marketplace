@@ -22,9 +22,9 @@ def add_entry(log_path: Path, entry: dict) -> None:
 
 def prune_log(log_path: Path, max_discarded: int = 50, max_kept_detailed: int = 30) -> None:
     data = read_log(log_path)
-    entries = data["entries"]
-    kept = [e for e in entries if e["outcome"] == "kept"]
-    discarded = [e for e in entries if e["outcome"] != "kept"]
+    kept, discarded = [], []
+    for e in data["entries"]:
+        (kept if e["outcome"] == "kept" else discarded).append(e)
 
     if len(discarded) > max_discarded:
         discarded = discarded[-max_discarded:]
@@ -35,6 +35,10 @@ def prune_log(log_path: Path, max_discarded: int = 50, max_kept_detailed: int = 
         summaries = data.get("lessons_summary", [])
         for entry in to_summarize:
             summaries.append(f"iter {entry['iteration']}: {entry.get('lessons', entry.get('change_summary', ''))}")
+        # Cap summaries to prevent unbounded growth
+        max_summaries = max_discarded + max_kept_detailed
+        if len(summaries) > max_summaries:
+            summaries = summaries[-max_summaries:]
         data["lessons_summary"] = summaries
 
     data["entries"] = kept + discarded
