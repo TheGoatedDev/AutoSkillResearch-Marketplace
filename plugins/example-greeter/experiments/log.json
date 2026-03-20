@@ -38,6 +38,19 @@
       "elo": 1531.5,
       "reason": "Candidate won 3-1 with 2 draws. Trigger accuracy improved from 67% to 100% \u2014 good-morning and greeting-context now reliably trigger. Description specificity was the key lever.",
       "timestamp": "2026-03-20T15:13:03.687036+00:00"
+    },
+    {
+      "iteration": 4,
+      "hypothesis": "Constrain time-of-day acknowledgment to only when user explicitly mentions it",
+      "outcome": "keep",
+      "metrics": {
+        "eval_quality": 0.75,
+        "trigger_accuracy": 1.0,
+        "token_efficiency": 0.526
+      },
+      "elo": 1560,
+      "reason": "Candidate won 3-0 with 3 draws. Eliminating unwanted time references from casual greetings improved simple-hello, casual-hey, and good-morning quality scores. Trigger accuracy maintained at 100%.",
+      "timestamp": "2026-03-20T15:18:10.437982+00:00"
     }
   ]
 }
