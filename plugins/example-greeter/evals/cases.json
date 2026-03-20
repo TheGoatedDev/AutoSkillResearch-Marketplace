@@ -1,0 +1,38 @@
+[
+  {
+    "id": "simple-hello",
+    "input": "Hello!",
+    "expected_trigger": true,
+    "rubric": "Should respond with a friendly greeting and offer to help. Should NOT be overly enthusiastic or use excessive exclamation marks. Should ask what the user wants to work on."
+  },
+  {
+    "id": "casual-hey",
+    "input": "hey",
+    "expected_trigger": true,
+    "rubric": "Should handle casual greeting naturally. Should not be stiff or overly formal. Should offer help."
+  },
+  {
+    "id": "good-morning",
+    "input": "Good morning!",
+    "expected_trigger": true,
+    "rubric": "Should acknowledge the time of day (morning). Should respond warmly and offer to help."
+  },
+  {
+    "id": "negative-code-question",
+    "input": "How do I fix this TypeScript error?",
+    "expected_trigger": false,
+    "rubric": "This is a technical question, not a greeting. The greeting skill should NOT trigger."
+  },
+  {
+    "id": "negative-file-request",
+    "input": "Read the file src/index.ts",
+    "expected_trigger": false,
+    "rubric": "This is a file operation request, not a greeting. The greeting skill should NOT trigger."
+  },
+  {
+    "id": "greeting-with-context",
+    "input": "Hi there, I'm working on a React app",
+    "expected_trigger": true,
+    "rubric": "Should greet the user AND acknowledge that they're working on a React app. Should offer to help with the React project specifically."
+  }
+]

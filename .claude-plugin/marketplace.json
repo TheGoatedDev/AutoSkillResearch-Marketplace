@@ -5,5 +5,12 @@
   "owner": {
     "name": "Thomas Burridge"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "example-greeter",
+      "description": "A friendly greeting skill that welcomes users and offers help",
+      "source": "./plugins/example-greeter",
+      "category": "productivity"
+    }
+  ]
 }
