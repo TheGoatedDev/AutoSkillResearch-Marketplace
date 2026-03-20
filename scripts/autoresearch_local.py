@@ -457,6 +457,7 @@ def _run_skill_rotation(
     consecutive_errors = 0
     outcomes: list[IterationOutcome] = []
     iterations = config.iterations_per_rotation
+    outcome: IterationOutcome | None = None
 
     for i in range(1, iterations + 1):
         console.print(f"\n[bold]--- Iteration {i}/{iterations} ---[/bold]")
@@ -493,8 +494,8 @@ def _run_skill_rotation(
             console.print(f"\n[red]{consecutive_errors} consecutive errors. Stopping.[/red]")
             break
 
-        # Check ceiling
-        if outcome.metrics:
+        # Check ceiling (only if we have metrics from a successful iteration)
+        if outcome is not None and outcome.metrics:
             eq = outcome.metrics.get("eval_quality", 0)
             ta = outcome.metrics.get("trigger_accuracy", 0)
             if eq >= 0.95 and ta >= 0.95:
