@@ -21,6 +21,17 @@
       "commit": "d5049b2",
       "notes": "3-2 on positive cases (up from 3-3 in iter 1), but eval_quality still below 0.6 floor. Step 4 worked on poke-holes and is-this-good-idea (more forceful challenge) but not on uncertain-feature or challenge-my-thinking (model rationalized context as prerequisite to challenge). Improvement was directional but insufficient.",
       "timestamp": "2026-03-20T16:03:14.953968+00:00"
+    },
+    {
+      "hypothesis": "Assume worst-case and challenge directly \u2014 add Core Behavior paragraph: when context thin, assume most common failure mode and challenge it directly instead of warm-up questions",
+      "outcome": "discard",
+      "eval_quality": 0.45,
+      "trigger_accuracy": 1.0,
+      "candidate_elo": 1491.6,
+      "matches": 10,
+      "commit": "2d2dc78",
+      "notes": "1 candidate win (is-this-good-idea), 2 champion wins (poke-holes, what-am-i-missing), 7 draws. Thin-context paragraph did not reliably change first-move behavior \u2014 model still opened with context-gathering questions on 4/6 positive cases. Only fired correctly on is-this-good-idea where the rewrite premise was explicit enough to assume the failure mode (rewrite-vs-fix not justified). The paragraph fights deeply-ingrained model behavior: when input is genuinely ambiguous (microservices for what system?), model judges that assumptions would be too broad to challenge. eval_quality below 0.6 floor.",
+      "timestamp": "2026-03-20T16:18:16.792067+00:00"
     }
   ]
 }
