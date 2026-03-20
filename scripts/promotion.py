@@ -35,3 +35,31 @@ def decide_promotion(config: dict, candidate_elo: float, matches_played: int,
         return {"decision": "discard", "reason": "No metric improved"}
 
     return {"decision": "keep", "reason": "All checks passed"}
+
+
+def main():
+    import argparse
+    import json
+    from pathlib import Path
+
+    parser = argparse.ArgumentParser(description="Promotion decision tree")
+    parser.add_argument("--config", required=True, help="Path to eval config JSON")
+    parser.add_argument("--elo", type=float, required=True)
+    parser.add_argument("--matches", type=int, required=True)
+    parser.add_argument("--metrics-old-file", required=True, help="Path to JSON file of old metrics")
+    parser.add_argument("--metrics-new-file", required=True, help="Path to JSON file of new metrics")
+    args = parser.parse_args()
+
+    config = json.loads(Path(args.config).read_text())
+    result = decide_promotion(
+        config=config,
+        candidate_elo=args.elo,
+        matches_played=args.matches,
+        metrics_old=json.loads(Path(args.metrics_old_file).read_text()),
+        metrics_new=json.loads(Path(args.metrics_new_file).read_text()),
+    )
+    print(json.dumps(result, indent=2))
+
+
+if __name__ == "__main__":
+    main()

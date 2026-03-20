@@ -56,3 +56,33 @@ def update_elo_state(elo_path: Path, candidate_commit: str, match_result: str) -
         state["current_champion"]["matches_played"] += 1
     elo_path.write_text(json.dumps(state, indent=2))
     return state
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="ELO rating operations")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    init = sub.add_parser("init", help="Create initial ELO state")
+    init.add_argument("--elo-path", required=True)
+    init.add_argument("--champion-commit", required=True)
+
+    update = sub.add_parser("update", help="Update ELO after match/decision")
+    update.add_argument("--elo-path", required=True)
+    update.add_argument("--candidate-commit", required=True)
+    update.add_argument("--result", required=True, choices=["A", "B", "draw", "promote", "discard"])
+
+    args = parser.parse_args()
+
+    if args.command == "init":
+        state = create_initial_elo_state(args.champion_commit)
+        Path(args.elo_path).write_text(json.dumps(state, indent=2))
+        print(json.dumps(state, indent=2))
+    elif args.command == "update":
+        state = update_elo_state(Path(args.elo_path), args.candidate_commit, args.result)
+        print(json.dumps(state, indent=2))
+
+
+if __name__ == "__main__":
+    main()

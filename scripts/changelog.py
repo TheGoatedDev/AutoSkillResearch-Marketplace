@@ -29,3 +29,25 @@ def generate_changelog(skill_name: str, log: dict, version: str | None = None) -
         lines.append("")
 
     return "\n".join(lines)
+
+
+def main():
+    import argparse
+    import json
+    from pathlib import Path
+
+    parser = argparse.ArgumentParser(description="Generate changelog")
+    parser.add_argument("--skill-name", required=True)
+    parser.add_argument("--log-path", required=True)
+    parser.add_argument("--output", required=True, help="Output markdown path")
+    parser.add_argument("--version", default=None)
+    args = parser.parse_args()
+
+    log = json.loads(Path(args.log_path).read_text())
+    changelog = generate_changelog(args.skill_name, log, version=args.version)
+    Path(args.output).write_text(changelog)
+    print(f'{{"status": "written", "path": "{args.output}"}}')
+
+
+if __name__ == "__main__":
+    main()
