@@ -54,6 +54,17 @@
       "commit": "e3cc526",
       "notes": "Candidate only won the exact uncertain-feature case. is-this-good-idea and the remaining positive cases were draws, as were all four negative trigger cases. That leaves eval_quality at 0.55 (1 win, 9 draws), below the 0.6 floor, so the added example was too narrow to beat the current champion.",
       "timestamp": "2026-03-20T16:41:53.837755+00:00"
+    },
+    {
+      "hypothesis": "Add domain-specific failure modes section \u2014 explicit instruction to cite 2-3 common real-world failure modes for the specific technology/decision in the opening challenge",
+      "outcome": "discard",
+      "eval_quality": 0.65,
+      "trigger_accuracy": 1.0,
+      "candidate_elo": 1532.1,
+      "matches": 10,
+      "commit": "781f3a8",
+      "notes": "Won 4-1 on positive cases (explicit-interrogate, poke-holes, what-am-i-missing, uncertain-feature). Lost challenge-my-thinking, drew is-this-good-idea. All 4 negatives correct draws. However, eval_quality 0.65 < champion 0.8 due to promotion check comparing absolute metrics not just head-to-head. The domain-specific failure modes list was mostly ignored by the model \u2014 both candidate and champion opened with context-gathering on most cases. The instruction did not reliably change first-move behavior. Need a fundamentally different approach to force challenge-forward openers.",
+      "timestamp": "2026-03-20T20:38:31.629324+00:00"
     }
   ]
 }
