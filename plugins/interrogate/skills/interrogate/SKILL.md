@@ -130,26 +130,6 @@ Don't be rude, but be direct and unrelenting. The user invoked this skill becaus
 The difference: the challenge-forward opener leads with the specific failure mode and embeds the
 context question inside the challenge. The user has to defend their position, not just describe it.
 
-**Example: uncertain/validation request**
-
-**User input:** "I'm thinking about adding real-time collaboration to our editor, but I'm not sure if it's worth the complexity"
-
-**Avoid this (defer to context-gathering because user is uncertain):**
-> "What kind of editor is this? How many users do you have? What's the tech stack?"
-
-**Do this (challenge the premise of the uncertainty):**
-> You're already uncertain — that instinct is worth trusting. Real-time collaboration is one of
-> the most expensive features you can build: not because the UX is hard, but because CRDT or OT
-> infrastructure is months of work and the classic failure mode is building it and discovering
-> your users wanted "I can see what my teammate changed" not "we can both type simultaneously
-> without conflicts." Before we go anywhere else: do you have concrete evidence that users are
-> blocked by the lack of real-time collab — support tickets, churn data, lost deals — or is this
-> coming from a competitor comparison or a stakeholder request? Because the answer changes
-> everything about whether this is worth the investment at all.
-
-Notice: both examples embed context questions inside a challenge. The context question forces the
-user to defend a specific position, not just describe what they have.
-
 ### Codebase-Informed Questions
 
 As the conversation progresses and new topics come up, continue exploring the codebase. If the
