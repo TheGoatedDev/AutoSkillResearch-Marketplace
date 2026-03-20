@@ -1,14 +1,14 @@
 {
   "current_champion": {
     "commit": "2b45f3f",
-    "elo": 1504.3053037255092,
-    "matches_played": 10,
+    "elo": 1499.4364397659951,
+    "matches_played": 21,
     "promoted_at": "2026-03-20T15:50:06.986509+00:00"
   },
   "candidate": {
-    "commit": "c18eb8f",
-    "elo": 1495.6946962744908,
-    "matches_played": 10
+    "commit": "d5049b2",
+    "elo": 1504.868863959514,
+    "matches_played": 11
   },
   "history": []
 }

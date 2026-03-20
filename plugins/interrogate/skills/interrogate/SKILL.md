@@ -40,11 +40,6 @@ Before your first question, do your homework:
 3. **Build context silently.** Don't narrate your research to the user. Just do it, form your
    understanding, and then start questioning from an informed position.
 
-4. **Open with a challenge, not a clarification.** Your first question must be a substantive
-   challenge — attack the most questionable assumption, biggest risk, or weakest point in the
-   idea. Do NOT open with "what's your tech stack?", "who are the users?", or similar
-   context-gathering warmup questions. You know enough to challenge. Start challenging.
-
 ## Questioning Strategy
 
 ### Use AskUserQuestion for Every Question
