@@ -1,8 +1,12 @@
 """Generate changelog from experiment log kept entries."""
 
 
+def _is_kept_outcome(entry: dict) -> bool:
+    return entry.get("outcome") in {"keep", "kept"}
+
+
 def generate_changelog(skill_name: str, log: dict, version: str | None = None) -> str:
-    kept = [e for e in log.get("entries", []) if e.get("outcome") == "kept"]
+    kept = [e for e in log.get("entries", []) if _is_kept_outcome(e)]
     kept.sort(key=lambda e: e.get("timestamp", ""), reverse=True)
 
     lines = [f"# Changelog \u2014 {skill_name}", ""]
@@ -10,7 +14,7 @@ def generate_changelog(skill_name: str, log: dict, version: str | None = None) -
     for i, entry in enumerate(kept):
         v = version if i == 0 and version else None
         date = entry.get("timestamp", "unknown")[:10]
-        summary = entry.get("change_summary", "No description")
+        summary = entry.get("change_summary") or entry.get("hypothesis") or "No description"
 
         header = f"## {v} ({date})" if v else f"## {date}"
         lines.append(header)

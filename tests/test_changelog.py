@@ -20,6 +20,26 @@ class TestGenerateChangelog:
         assert "0.72" in result
         assert "0.78" in result
 
+    def test_keep_alias_entries_appear(self):
+        log = {"entries": [
+            {"iteration": 1, "timestamp": "2026-03-20T22:15:00Z", "commit": "abc1234",
+             "change_summary": "Added concrete example",
+             "metrics": {"eval_quality": {"old": 0.75, "new": 0.80, "delta": 0.05}},
+             "outcome": "keep"}
+        ]}
+        result = generate_changelog("my-skill", log, version="1.0.2")
+        assert "1.0.2" in result
+        assert "Added concrete example" in result
+
+    def test_falls_back_to_hypothesis_when_change_summary_missing(self):
+        log = {"entries": [
+            {"iteration": 1, "timestamp": "2026-03-20T22:15:00Z", "commit": "abc1234",
+             "hypothesis": "Add challenge-forward opener example",
+             "outcome": "keep"}
+        ]}
+        result = generate_changelog("my-skill", log)
+        assert "Add challenge-forward opener example" in result
+
     def test_discarded_entries_excluded(self):
         log = {"entries": [
             {"iteration": 1, "outcome": "discarded", "change_summary": "Bad change"},

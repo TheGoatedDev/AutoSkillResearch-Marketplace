@@ -54,6 +54,20 @@ class TestPruneLog:
         kept = [e for e in data["entries"] if e["outcome"] == "kept"]
         assert len(kept) == 10
 
+    def test_keeps_keep_alias_entries_during_prune(self, tmp_path):
+        log_path = tmp_path / "log.json"
+        create_empty_log(log_path)
+        for i in range(10):
+            add_entry(log_path, {"iteration": i, "commit": f"k{i:04d}", "hypothesis": "",
+                "change_summary": "", "metrics": {}, "elo": {}, "outcome": "keep", "lessons": f"lesson {i}"})
+        for i in range(10, 65):
+            add_entry(log_path, {"iteration": i, "commit": f"d{i:04d}", "hypothesis": "",
+                "change_summary": "", "metrics": {}, "elo": {}, "outcome": "discarded", "lessons": ""})
+        prune_log(log_path, max_discarded=50)
+        data = read_log(log_path)
+        kept = [e for e in data["entries"] if e["outcome"] == "keep"]
+        assert len(kept) == 10
+
     def test_summarizes_old_kept_entries(self, tmp_path):
         log_path = tmp_path / "log.json"
         create_empty_log(log_path)

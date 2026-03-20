@@ -5,6 +5,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
+def _is_kept_outcome(entry: dict) -> bool:
+    return entry.get("outcome") in {"keep", "kept"}
+
+
 def create_empty_log(log_path: Path) -> None:
     log_path.write_text(json.dumps({"entries": []}, indent=2))
 
@@ -24,7 +28,7 @@ def prune_log(log_path: Path, max_discarded: int = 50, max_kept_detailed: int = 
     data = read_log(log_path)
     kept, discarded = [], []
     for e in data["entries"]:
-        (kept if e["outcome"] == "kept" else discarded).append(e)
+        (kept if _is_kept_outcome(e) else discarded).append(e)
 
     if len(discarded) > max_discarded:
         discarded = discarded[-max_discarded:]
