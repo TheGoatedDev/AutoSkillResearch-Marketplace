@@ -25,6 +25,19 @@
       "elo": 1498,
       "reason": "Hard floor violation: eval_quality=0.500 < minimum=0.6. Tied 1-1 with champion. Example helped tone on simple-hello but champion won greeting-context with more specific React help.",
       "timestamp": "2026-03-20T15:08:31.286326+00:00"
+    },
+    {
+      "iteration": 3,
+      "hypothesis": "Expand description with explicit trigger phrases including good morning/afternoon/evening and greetings-with-context",
+      "outcome": "keep",
+      "metrics": {
+        "eval_quality": 0.667,
+        "trigger_accuracy": 1.0,
+        "token_efficiency": 0.477
+      },
+      "elo": 1531.5,
+      "reason": "Candidate won 3-1 with 2 draws. Trigger accuracy improved from 67% to 100% \u2014 good-morning and greeting-context now reliably trigger. Description specificity was the key lever.",
+      "timestamp": "2026-03-20T15:13:03.687036+00:00"
     }
   ]
 }

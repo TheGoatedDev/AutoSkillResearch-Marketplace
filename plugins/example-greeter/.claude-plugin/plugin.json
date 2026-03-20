@@ -1,5 +1,5 @@
 {
   "name": "example-greeter",
   "description": "A friendly greeting skill that welcomes users and offers help",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
