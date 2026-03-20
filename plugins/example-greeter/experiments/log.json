@@ -12,6 +12,19 @@
       "elo": 1479,
       "reason": "Champion won 2-0 with 4 draws. Candidate response to simple-hello was too enthusiastic. Candidate did not offer help in casual-hey. Both failed to trigger on good-morning.",
       "timestamp": "2026-03-20T15:03:50.680997+00:00"
+    },
+    {
+      "iteration": 2,
+      "hypothesis": "Add concrete example to anchor greeting tone and structure",
+      "outcome": "discard",
+      "metrics": {
+        "eval_quality": 0.5,
+        "trigger_accuracy": 0.667,
+        "token_efficiency": 0.489
+      },
+      "elo": 1498,
+      "reason": "Hard floor violation: eval_quality=0.500 < minimum=0.6. Tied 1-1 with champion. Example helped tone on simple-hello but champion won greeting-context with more specific React help.",
+      "timestamp": "2026-03-20T15:08:31.286326+00:00"
     }
   ]
 }
