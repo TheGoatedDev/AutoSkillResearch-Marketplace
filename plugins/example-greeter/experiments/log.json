@@ -51,6 +51,19 @@
       "elo": 1560,
       "reason": "Candidate won 3-0 with 3 draws. Eliminating unwanted time references from casual greetings improved simple-hello, casual-hey, and good-morning quality scores. Trigger accuracy maintained at 100%.",
       "timestamp": "2026-03-20T15:18:10.437982+00:00"
+    },
+    {
+      "iteration": 5,
+      "hypothesis": "Add explicit instruction to acknowledge user-mentioned project context",
+      "outcome": "discard",
+      "metrics": {
+        "eval_quality": 0.583,
+        "trigger_accuracy": 1.0,
+        "token_efficiency": 0.5
+      },
+      "elo": 1510,
+      "reason": "Hard floor violation: eval_quality=0.583 < 0.6. Won 1-0 but 5 draws \u2014 change too subtle. Champion already handles project context adequately via description.",
+      "timestamp": "2026-03-20T15:22:14.432929+00:00"
     }
   ]
 }
