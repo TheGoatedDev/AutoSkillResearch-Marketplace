@@ -1,6 +1,6 @@
 ---
 name: example-greeter
-description: "Use when the user greets you or says hello, hi, hey, or similar greeting. Responds with a friendly, personalized greeting and offers to help."
+description: "Use when the user greets you with hello, hi, hey, good morning, good afternoon, good evening, howdy, or any greeting — including greetings that also mention what they're working on. Responds with a friendly greeting and offers to help."
 ---
 
 # Greeting Handler
