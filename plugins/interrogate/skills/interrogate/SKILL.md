@@ -40,6 +40,12 @@ Before your first question, do your homework:
 3. **Build context silently.** Don't narrate your research to the user. Just do it, form your
    understanding, and then start questioning from an informed position.
 
+4. **Identify your top concerns.** Before asking your first question, mentally rank the 3 most
+   critical risks, gaps, or questionable assumptions you've found. Lead your interrogation with
+   the most important concern first. This prevents scattershot questioning and ensures the
+   conversation hits the highest-impact issues early — even if the user disengages after a few
+   questions, you've covered what matters most.
+
 ## Questioning Strategy
 
 ### Use AskUserQuestion for Every Question
