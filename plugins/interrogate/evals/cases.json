@@ -1,0 +1,62 @@
+[
+  {
+    "id": "explicit-interrogate",
+    "input": "Interrogate this idea: we want to add a caching layer in front of our API",
+    "expected_trigger": true,
+    "rubric": "Should start by researching the codebase and external context before asking questions. Should use AskUserQuestion tool. Should challenge assumptions about caching (invalidation strategy, cache key design, consistency requirements). Should NOT immediately agree or start implementing."
+  },
+  {
+    "id": "poke-holes",
+    "input": "Can you poke holes in our plan to migrate from PostgreSQL to MongoDB?",
+    "expected_trigger": true,
+    "rubric": "Should act as devil's advocate. Should question the migration rationale, data model implications, query pattern changes, and rollback strategy. Should use AskUserQuestion. Should NOT be agreeable or supportive — should stress-test the decision."
+  },
+  {
+    "id": "is-this-good-idea",
+    "input": "Is it a good idea to rewrite our auth system from scratch?",
+    "expected_trigger": true,
+    "rubric": "Should treat this as a request for rigorous validation. Should question why rewriting vs. fixing, what's wrong with the current system, security implications, migration path. Should use AskUserQuestion."
+  },
+  {
+    "id": "what-am-i-missing",
+    "input": "We're planning to go serverless. What am I missing?",
+    "expected_trigger": true,
+    "rubric": "Should systematically explore cold starts, vendor lock-in, debugging complexity, cost at scale, state management, local dev experience. Should use AskUserQuestion with structured format."
+  },
+  {
+    "id": "challenge-my-thinking",
+    "input": "Challenge my thinking on this: we should use microservices instead of a monolith",
+    "expected_trigger": true,
+    "rubric": "Should push back on the microservices default. Should ask about team size, deployment complexity, data consistency, operational overhead. Should NOT assume microservices are better."
+  },
+  {
+    "id": "uncertain-feature",
+    "input": "I'm thinking about adding real-time collaboration to our editor, but I'm not sure if it's worth the complexity",
+    "expected_trigger": true,
+    "rubric": "User is expressing uncertainty — should recognize this as a validation request. Should explore the complexity cost vs. user value, alternative approaches (simpler conflict resolution), and whether the problem is real or hypothetical."
+  },
+  {
+    "id": "negative-fix-bug",
+    "input": "Fix the null pointer exception in UserService.java line 42",
+    "expected_trigger": false,
+    "rubric": "This is a direct bug fix request, not an idea to interrogate. The interrogate skill should NOT trigger."
+  },
+  {
+    "id": "negative-write-code",
+    "input": "Write a Python function that sorts a list of dictionaries by a given key",
+    "expected_trigger": false,
+    "rubric": "This is a code generation request. The interrogate skill should NOT trigger."
+  },
+  {
+    "id": "negative-explain-code",
+    "input": "Explain how the authentication middleware works in this codebase",
+    "expected_trigger": false,
+    "rubric": "This is an explanation request, not a feature or idea to challenge. The interrogate skill should NOT trigger."
+  },
+  {
+    "id": "negative-refactor",
+    "input": "Refactor this component to use hooks instead of class components",
+    "expected_trigger": false,
+    "rubric": "This is a direct refactoring task. The interrogate skill should NOT trigger."
+  }
+]

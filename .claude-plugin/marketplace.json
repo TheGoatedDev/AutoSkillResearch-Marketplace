@@ -11,6 +11,12 @@
       "description": "A friendly greeting skill that welcomes users and offers help",
       "source": "./plugins/example-greeter",
       "category": "productivity"
+    },
+    {
+      "name": "interrogate",
+      "description": "Devil's advocate interrogation of features, ideas, and proposals — stress-tests thinking with structured, rigorous questioning",
+      "source": "./plugins/interrogate",
+      "category": "productivity"
     }
   ]
 }
