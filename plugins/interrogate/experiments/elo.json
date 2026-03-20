@@ -1,8 +1,8 @@
 {
   "current_champion": {
     "commit": "461932f",
-    "elo": 1525.8457130239976,
-    "matches_played": 20,
+    "elo": 1545.469700450527,
+    "matches_played": 30,
     "promoted_at": "2026-03-20T16:23:12.396387+00:00"
   },
   "candidate": null,
@@ -15,6 +15,11 @@
     {
       "commit": "e3cc526",
       "final_elo": 1527.3020487413646,
+      "outcome": "discarded"
+    },
+    {
+      "commit": "18137e3",
+      "final_elo": 1480.3760125734707,
       "outcome": "discarded"
     }
   ]

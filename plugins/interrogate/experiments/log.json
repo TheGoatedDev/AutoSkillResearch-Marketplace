@@ -65,6 +65,17 @@
       "commit": "781f3a8",
       "notes": "Won 4-1 on positive cases (explicit-interrogate, poke-holes, what-am-i-missing, uncertain-feature). Lost challenge-my-thinking, drew is-this-good-idea. All 4 negatives correct draws. However, eval_quality 0.65 < champion 0.8 due to promotion check comparing absolute metrics not just head-to-head. The domain-specific failure modes list was mostly ignored by the model \u2014 both candidate and champion opened with context-gathering on most cases. The instruction did not reliably change first-move behavior. Need a fundamentally different approach to force challenge-forward openers.",
       "timestamp": "2026-03-20T20:38:31.629324+00:00"
+    },
+    {
+      "hypothesis": "Restructure skill \u2014 move challenge-forward example to immediately after Core Behavior, before research instructions, to increase salience",
+      "outcome": "discard",
+      "eval_quality": 0.35,
+      "trigger_accuracy": 1.0,
+      "candidate_elo": 1480.4,
+      "matches": 10,
+      "commit": "18137e3",
+      "notes": "Champion won 4-1 on positive cases. Restructuring made things WORSE \u2014 the candidate produced thinner context-gathering openers that judges rated lower than champion. Multiple executors noted the globally-installed skill shadows the modified SKILL.md in temp eval directories. The structural change to instruction ordering had no detectable positive effect on challenge-forward behavior. eval_quality 0.35, far below 0.6 floor.",
+      "timestamp": "2026-03-20T21:00:55.393779+00:00"
     }
   ]
 }
