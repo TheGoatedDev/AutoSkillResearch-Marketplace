@@ -1,0 +1,11 @@
+{
+  "id": "descriptive-id",
+  "input": "The exact prompt where the skill failed or underperformed",
+  "expected_trigger": true,
+  "context": {
+    "files": [],
+    "description": "Describe your project setup"
+  },
+  "rubric": "What should the skill have done? Be specific.",
+  "metrics": ["eval_quality"]
+}

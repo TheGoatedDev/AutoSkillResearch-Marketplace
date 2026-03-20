@@ -1,0 +1,9 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "autoskillresearch",
+  "description": "Self-improving Claude Code skills marketplace — skills that get better overnight",
+  "owner": {
+    "name": "Thomas Burridge"
+  },
+  "plugins": []
+}
