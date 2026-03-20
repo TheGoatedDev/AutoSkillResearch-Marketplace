@@ -1,3 +1,5 @@
+import json
+import subprocess
 from pathlib import Path
 from scripts.champion_cache import ChampionCache, ExecutionResult
 
@@ -51,3 +53,45 @@ class TestChampionCache:
         cache = ChampionCache(cache_dir)
         cache.put("content", "case-1", self._make_result())
         assert cache_dir.exists()
+
+
+class TestChampionCacheCLI:
+    """Test the CLI interface used by the SKILL.md orchestrator."""
+
+    def _run(self, *args: str) -> dict:
+        result = subprocess.run(
+            ["python3", "-m", "scripts.champion_cache", *args],
+            capture_output=True, text=True, check=True,
+        )
+        return json.loads(result.stdout)
+
+    def _write_content(self, tmp_path: Path, content: str = "skill content") -> Path:
+        p = tmp_path / "champion.md"
+        p.write_text(content)
+        return p
+
+    def test_get_miss(self, tmp_path):
+        content_file = self._write_content(tmp_path)
+        cache_dir = tmp_path / ".cache"
+        out = self._run("get", "--cache-dir", str(cache_dir), "--champion-content-file", str(content_file), "--case-id", "c1")
+        assert out["hit"] is False
+
+    def test_put_then_get_hit(self, tmp_path):
+        content_file = self._write_content(tmp_path)
+        cache_dir = tmp_path / ".cache"
+        result_json = json.dumps({"output": "hello", "token_count": 100, "triggered": True, "error": None})
+        self._run("put", "--cache-dir", str(cache_dir), "--champion-content-file", str(content_file), "--case-id", "c1", "--result", result_json)
+        out = self._run("get", "--cache-dir", str(cache_dir), "--champion-content-file", str(content_file), "--case-id", "c1")
+        assert out["hit"] is True
+        assert out["output"] == "hello"
+        assert out["token_count"] == 100
+        assert out["triggered"] is True
+
+    def test_invalidate_clears_cache(self, tmp_path):
+        content_file = self._write_content(tmp_path)
+        cache_dir = tmp_path / ".cache"
+        result_json = json.dumps({"output": "hi", "token_count": 50, "triggered": False, "error": None})
+        self._run("put", "--cache-dir", str(cache_dir), "--champion-content-file", str(content_file), "--case-id", "c1", "--result", result_json)
+        self._run("invalidate", "--cache-dir", str(cache_dir))
+        out = self._run("get", "--cache-dir", str(cache_dir), "--champion-content-file", str(content_file), "--case-id", "c1")
+        assert out["hit"] is False

@@ -61,6 +61,10 @@ Based on the experiment log (what worked, what failed) and the optimization stra
 - Write the hypothesis down before making any changes
 - Make ONE focused change per iteration
 - Save the current SKILL.md content as `champion_content` (you need it for comparison)
+- Write the champion content to a temp file for cache lookups:
+  ```bash
+  cp plugins/<skill>/skills/<skill>/SKILL.md /tmp/ar-champion.md
+  ```
 
 **3. Modify**
 - Edit the SKILL.md file to implement your hypothesis
@@ -77,9 +81,15 @@ a. **Run candidate skill** — dispatch a `skill-executor` agent with:
    - The modified SKILL.md content
    - The eval case input and context
 
-b. **Run champion skill** — dispatch a `skill-executor` agent with:
-   - The saved `champion_content`
-   - The same eval case input and context
+b. **Run champion skill (with caching)** — first check the cache:
+   ```bash
+   python3 scripts/champion_cache.py get --cache-dir plugins/<skill>/experiments/.cache --champion-content-file /tmp/ar-champion.md --case-id <case_id>
+   ```
+   - If the result contains `"hit": true`, use the cached `output`, `token_count`, and `triggered` values. Do NOT dispatch a skill-executor agent.
+   - If the result contains `"hit": false`, dispatch a `skill-executor` agent with the saved `champion_content` and the eval case input/context. Then cache the result:
+     ```bash
+     python3 scripts/champion_cache.py put --cache-dir plugins/<skill>/experiments/.cache --champion-content-file /tmp/ar-champion.md --case-id <case_id> --result '<executor_result_json>'
+     ```
 
 c. **Judge** — dispatch a `skill-judge` agent with:
    - Both outputs (randomized order, anonymized as A/B)
@@ -116,6 +126,10 @@ python3 scripts/promotion.py --config plugins/<skill>/evals/config.json --elo <c
 ```
 
 If **keep**:
+- Invalidate the champion cache (the champion is about to change):
+  ```bash
+  python3 scripts/champion_cache.py invalidate --cache-dir plugins/<skill>/experiments/.cache
+  ```
 - Update experiment log:
   ```bash
   python3 scripts/experiment_log.py add --log-path plugins/<skill>/experiments/log.json --entry '<json>'
