@@ -9,6 +9,17 @@ def _is_kept_outcome(entry: dict) -> bool:
     return entry.get("outcome") in {"keep", "kept"}
 
 
+def _entry_summary_text(entry: dict) -> str:
+    return (
+        entry.get("lessons")
+        or entry.get("change_summary")
+        or entry.get("notes")
+        or entry.get("reason")
+        or entry.get("hypothesis")
+        or ""
+    )
+
+
 def create_empty_log(log_path: Path) -> None:
     log_path.write_text(json.dumps({"entries": []}, indent=2))
 
@@ -38,7 +49,7 @@ def prune_log(log_path: Path, max_discarded: int = 50, max_kept_detailed: int = 
         kept = kept[len(kept) - max_kept_detailed:]
         summaries = data.get("lessons_summary", [])
         for entry in to_summarize:
-            summaries.append(f"iter {entry['iteration']}: {entry.get('lessons', entry.get('change_summary', ''))}")
+            summaries.append(f"iter {entry['iteration']}: {_entry_summary_text(entry)}")
         # Cap summaries to prevent unbounded growth
         max_summaries = max_discarded + max_kept_detailed
         if len(summaries) > max_summaries:

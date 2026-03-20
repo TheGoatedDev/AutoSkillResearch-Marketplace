@@ -144,13 +144,17 @@ If **discard**:
   ```bash
   git reset --hard HEAD~1
   ```
+- Finalize ELO state for the discarded candidate:
+  ```bash
+  python3 scripts/elo.py update --elo-path plugins/<skill>/experiments/elo.json --candidate-commit <hash> --result discard
+  ```
 - Log the discarded attempt:
   ```bash
   python3 scripts/experiment_log.py add --log-path plugins/<skill>/experiments/log.json --entry '<json>'
   ```
 - Commit the log update:
   ```bash
-  git add plugins/<skill>/experiments/log.json
+  git add plugins/<skill>/experiments/log.json plugins/<skill>/experiments/elo.json
   git commit -m "autoresearch: discard — <hypothesis summary>"
   ```
 

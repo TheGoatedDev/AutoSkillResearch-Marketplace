@@ -81,3 +81,23 @@ class TestPruneLog:
         assert len(kept) == 30
         assert "lessons_summary" in data
         assert len(data["lessons_summary"]) == 5
+
+    def test_summarizes_repo_schema_entries_without_blank_lessons(self, tmp_path):
+        log_path = tmp_path / "log.json"
+        create_empty_log(log_path)
+        for i in range(35):
+            add_entry(log_path, {
+                "iteration": i,
+                "commit": f"k{i:04d}",
+                "hypothesis": f"hypothesis {i}",
+                "metrics": {"eval_quality": 0.8},
+                "elo": 1530 + i,
+                "outcome": "keep",
+                "reason": f"reason {i}",
+            })
+        prune_log(log_path, max_discarded=50, max_kept_detailed=30)
+        data = read_log(log_path)
+        assert "lessons_summary" in data
+        assert len(data["lessons_summary"]) == 5
+        assert all(not summary.endswith(": ") for summary in data["lessons_summary"])
+        assert data["lessons_summary"][0] == "iter 0: reason 0"
