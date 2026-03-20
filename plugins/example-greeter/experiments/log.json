@@ -1,3 +1,17 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "iteration": 1,
+      "hypothesis": "Add context-aware greeting and tone matching instructions to improve greeting-with-context case",
+      "outcome": "discard",
+      "metrics": {
+        "eval_quality": 0.333,
+        "trigger_accuracy": 0.667,
+        "token_efficiency": 0.468
+      },
+      "elo": 1479,
+      "reason": "Champion won 2-0 with 4 draws. Candidate response to simple-hello was too enthusiastic. Candidate did not offer help in casual-hey. Both failed to trigger on good-morning.",
+      "timestamp": "2026-03-20T15:03:50.680997+00:00"
+    }
+  ]
 }
