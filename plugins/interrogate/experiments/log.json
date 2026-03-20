@@ -1,3 +1,15 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "hypothesis": "Add concern-ranking synthesis step before questioning \u2014 rank top 3 concerns before first question to lead interrogation with highest-impact issues",
+      "outcome": "discard",
+      "eval_quality": 0.5,
+      "trigger_accuracy": 1.0,
+      "candidate_elo": 1495.7,
+      "matches": 10,
+      "commit": "c18eb8f",
+      "notes": "3-3 on positive cases, 4 draws on negatives. Step 4 concern-ranking instruction did not reliably change first-question behavior \u2014 models still opened with context-gathering questions. Champion was sharper on challenge-forward cases (poke-holes, challenge-my-thinking, uncertain-feature). eval_quality below 0.6 floor.",
+      "timestamp": "2026-03-20T15:50:43.253749+00:00"
+    }
+  ]
 }
