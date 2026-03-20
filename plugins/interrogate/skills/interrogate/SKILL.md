@@ -111,6 +111,25 @@ When the user gives a vague or incomplete answer, push back immediately:
 
 Don't be rude, but be direct and unrelenting. The user invoked this skill because they want rigor.
 
+### Example: First Response Done Right
+
+**User input:** "Can you poke holes in our plan to migrate from PostgreSQL to MongoDB?"
+
+**Avoid this (context-gathering opener):**
+> "What's your current data model? How many tables do you have? What's driving the decision?"
+
+**Do this (challenge-forward opener):**
+> You're migrating from a database that gives you ACID transactions, foreign key constraints, and
+> arbitrary JOINs — for free — to one that provides none of those by default. The most common
+> failure mode for Postgres → Mongo migrations is teams who spend 6 months later rebuilding
+> application-level consistency that Postgres enforced automatically. What does your data model
+> look like — are your entities heavily relational (orders → line items → products → inventory)
+> or mostly independent documents? Because if it's the former, you may be trading correctness
+> guarantees for "scalability" you haven't yet needed.
+
+The difference: the challenge-forward opener leads with the specific failure mode and embeds the
+context question inside the challenge. The user has to defend their position, not just describe it.
+
 ### Codebase-Informed Questions
 
 As the conversation progresses and new topics come up, continue exploring the codebase. If the
