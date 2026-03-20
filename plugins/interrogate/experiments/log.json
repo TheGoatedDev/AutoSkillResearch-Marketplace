@@ -32,6 +32,17 @@
       "commit": "2d2dc78",
       "notes": "1 candidate win (is-this-good-idea), 2 champion wins (poke-holes, what-am-i-missing), 7 draws. Thin-context paragraph did not reliably change first-move behavior \u2014 model still opened with context-gathering questions on 4/6 positive cases. Only fired correctly on is-this-good-idea where the rewrite premise was explicit enough to assume the failure mode (rewrite-vs-fix not justified). The paragraph fights deeply-ingrained model behavior: when input is genuinely ambiguous (microservices for what system?), model judges that assumptions would be too broad to challenge. eval_quality below 0.6 floor.",
       "timestamp": "2026-03-20T16:18:16.792067+00:00"
+    },
+    {
+      "hypothesis": "Add concrete example of challenge-forward opener vs context-gathering \u2014 show ideal first response pattern using poke-holes scenario with ACID failure mode",
+      "outcome": "keep",
+      "eval_quality": 0.8,
+      "trigger_accuracy": 1.0,
+      "candidate_elo": 1553.1,
+      "matches": 10,
+      "commit": "461932f",
+      "notes": "6-0 on positive cases, 4 draws on negatives. Adding one concrete example (poke-holes scenario showing challenge-forward vs context-gathering) reliably changed first-move behavior across all 6 positive cases. Model generalizes the example pattern to other topics (auth rewrite, serverless, microservices, real-time collab). Example gives a template the model follows where explicit rules failed in iterations 1-3. eval_quality 0.8, well above 0.6 floor.",
+      "timestamp": "2026-03-20T16:23:06.958080+00:00"
     }
   ]
 }
