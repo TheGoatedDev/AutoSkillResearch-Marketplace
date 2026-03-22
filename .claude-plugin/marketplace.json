@@ -23,6 +23,12 @@
       "description": "Multi-phase deep research pipeline that discovers, validates, and synthesizes information from many sources into a comprehensive report",
       "source": "./plugins/deep-research",
       "category": "research"
+    },
+    {
+      "name": "ux-cognitive-load",
+      "description": "Cognitive load audit of UI code — analyzes components for Miller's Law, Hick's Law, progressive disclosure, WCAG cognitive guidelines, and common anti-patterns",
+      "source": "./plugins/ux-cognitive-load",
+      "category": "productivity"
     }
   ]
 }
