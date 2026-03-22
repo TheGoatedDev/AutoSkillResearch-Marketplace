@@ -41,12 +41,31 @@ The goal here is breadth — cast the widest possible net before filtering. If t
 
 > Research the following topic as broadly as possible: **{topic}**
 >
-> Your job is pure discovery — find as many distinct, relevant sources as you can. Use at least 4-5 different search queries to cover different angles. For example, if the topic is "WebTransport API maturity":
-> - Search for the technology name directly: "WebTransport API"
-> - Search for comparisons: "WebTransport vs WebSockets"
-> - Search for adoption/production use: "WebTransport production readiness 2026"
-> - Search for official specs/standards: "W3C WebTransport specification status"
-> - Search for community sentiment: "WebTransport developer experience"
+> Your job is pure discovery — find as many distinct, relevant sources as you can. Use at least 5-6 different search queries to cover different angles. Adapt your query strategy to the type of research topic:
+>
+> **Single technology** (e.g., "WebTransport API maturity"):
+> - Direct name: "WebTransport API"
+> - Comparison with alternatives: "WebTransport vs WebSockets"
+> - Production readiness: "WebTransport production readiness 2026"
+> - Official specs: "W3C WebTransport specification status"
+> - Community sentiment: "WebTransport developer experience"
+>
+> **Comparison/evaluation** (e.g., "Workers vs Lambda@Edge vs Deno Deploy"):
+> - Head-to-head comparisons: "Cloudflare Workers vs Lambda@Edge"
+> - Each option independently: "Deno Deploy edge computing review"
+> - Independent benchmarks: "edge computing platform benchmark 2026"
+> - Migration/switching experiences: "migrated from Lambda@Edge to Workers"
+> - Pricing/limits comparisons: "edge computing pricing comparison"
+>
+> **Landscape/survey** (e.g., "AI code review tools"):
+> - Broad landscape: "AI code review tools comparison 2026"
+> - Specific tools by name (search for each major player individually)
+> - Integration patterns: "AI code review CI/CD integration"
+> - Developer experience reports: "AI code review developer experience"
+> - Critical/contrarian views: "AI code review limitations problems"
+> - Industry analysis: "AI code review market adoption"
+>
+> Mix and match these strategies based on the actual topic. The goal is diverse coverage across different angles and source types.
 >
 > For each source you find, return:
 >
