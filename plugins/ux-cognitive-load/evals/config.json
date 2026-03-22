@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "eval_quality": {
+      "tolerance": 0.02,
+      "minimum": 0.6
+    },
+    "trigger_accuracy": {
+      "tolerance": 0.05,
+      "minimum": 0.7
+    },
+    "token_efficiency": {
+      "tolerance": 0.10,
+      "minimum": null
+    }
+  },
+  "iterations_per_rotation": 10,
+  "elo_confidence_threshold": 1520,
+  "elo_minimum_matches": 5
+}
