@@ -103,9 +103,9 @@ Use the Agent tool with `subagent_type: "Code Reviewer"`. Pass this prompt:
 
 Once all three agents return, synthesize their reports into the final audit:
 
-1. **Count issues** by severity across all three reports. Tally critical, warning, and info counts.
-2. **Calculate overall score**: Start at 10, subtract 2 per critical issue, subtract 0.5 per warning. Floor at 0. Round to 1 decimal place.
-3. **Deduplicate**: If two agents flagged the same issue (same file, same location, same core problem), merge them into one entry and keep the more detailed recommendation. Note which agents both caught it.
+1. **Deduplicate**: If two agents flagged the same issue (same file, same location, same core problem), merge them into one entry and keep the more detailed recommendation. Note which agents both caught it.
+2. **Count issues** by severity across the deduplicated set. Tally critical, warning, and info counts.
+3. **Calculate overall score** from the deduplicated counts: Start at 10, subtract 2 per critical issue, subtract 0.5 per warning. Floor at 0. Round to 1 decimal place.
 4. **Rank priority actions**: Pick the top 5 issues by impact. Critical severity first, then warnings that affect the most users or appear across multiple files. For each, write a 1-2 sentence action item explaining what to fix and why it matters.
 
 ### Output Format
