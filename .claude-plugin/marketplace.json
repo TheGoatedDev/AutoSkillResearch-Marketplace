@@ -17,6 +17,12 @@
       "description": "Devil's advocate interrogation of features, ideas, and proposals — stress-tests thinking with structured, rigorous questioning",
       "source": "./plugins/interrogate",
       "category": "productivity"
+    },
+    {
+      "name": "deep-research",
+      "description": "Multi-phase deep research pipeline that discovers, validates, and synthesizes information from many sources into a comprehensive report",
+      "source": "./plugins/deep-research",
+      "category": "research"
     }
   ]
 }
