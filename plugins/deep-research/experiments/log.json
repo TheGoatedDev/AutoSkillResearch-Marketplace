@@ -11,6 +11,18 @@
       "draws": 4,
       "elo": 1539.35,
       "timestamp": "2026-03-22T13:13:18.809903+00:00"
+    },
+    {
+      "commit": "d1682c76097bc3f048b49e26ff82659b517569c5",
+      "hypothesis": "Add topic-type-aware Phase 3 subagent grouping strategies (comparison: per-product + cross-cutting; landscape: tooling + practices + sentiment; single-tech: spec + usage + performance) with independent-source requirement",
+      "outcome": "keep",
+      "eval_quality": 0.8125,
+      "trigger_accuracy": 1.0,
+      "wins": 5,
+      "losses": 0,
+      "draws": 3,
+      "elo": 1564.3,
+      "timestamp": "2026-03-22T13:21:18.152435+00:00"
     }
   ]
 }
