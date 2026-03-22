@@ -23,6 +23,19 @@
       "draws": 3,
       "elo": 1564.3,
       "timestamp": "2026-03-22T13:21:18.152435+00:00"
+    },
+    {
+      "commit": "b599b1d96a0125a3c9c0a0299753d7d95b6ea4d5",
+      "hypothesis": "Add confidence tiers (High/Medium/Low) to Phase 4 cross-referencing discipline",
+      "outcome": "discard",
+      "eval_quality": 0.75,
+      "trigger_accuracy": 1.0,
+      "wins": 4,
+      "losses": 0,
+      "draws": 4,
+      "elo": 1555.22,
+      "reason": "eval_quality regressed from 0.8125 to 0.75 (tolerance 0.02)",
+      "timestamp": "2026-03-22T14:12:58.342958+00:00"
     }
   ]
 }
