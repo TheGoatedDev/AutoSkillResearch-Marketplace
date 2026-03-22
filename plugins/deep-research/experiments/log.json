@@ -36,6 +36,19 @@
       "elo": 1555.22,
       "reason": "eval_quality regressed from 0.8125 to 0.75 (tolerance 0.02)",
       "timestamp": "2026-03-22T14:12:58.342958+00:00"
+    },
+    {
+      "commit": "37ea923",
+      "hypothesis": "Replace blocking Phase 0 AskUserQuestion with non-blocking inline default",
+      "outcome": "discard",
+      "eval_quality": 0.6875,
+      "trigger_accuracy": 1.0,
+      "wins": 4,
+      "losses": 1,
+      "draws": 3,
+      "elo": 1540,
+      "reason": "eval_quality regressed from 0.8125 to 0.6875; contamination \u2014 installed plugin loaded same version for both candidate and champion",
+      "timestamp": "2026-03-22T15:25:38.981453+00:00"
     }
   ]
 }
