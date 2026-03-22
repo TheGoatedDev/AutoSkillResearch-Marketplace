@@ -105,9 +105,18 @@ This is where the real depth comes from. Take your prioritized sources and distr
 
 **How to split the work:**
 
-- Group sources by theme or sub-topic rather than arbitrarily. If you have 6 sources and they naturally cluster into 3 themes, spawn 3 agents with 2 sources each.
+Adapt the grouping strategy to the research topic type:
+
+- **Comparison topics** (e.g., "X vs Y vs Z"): Assign one agent per product/option to go deep on its strengths, limitations, and ecosystem. Add one cross-cutting agent focused on independent benchmarks, migration experiences, and direct comparisons. Example for 3 options: 4 agents (3 per-product + 1 cross-cutting).
+
+- **Landscape/survey topics** (e.g., "how companies handle X"): Group by perspective rather than by tool. Example: one agent on tooling/products, one on real-world practices and case studies, one on developer sentiment and community perspectives.
+
+- **Single technology topics** (e.g., "is X ready for production?"): Group by aspect. Example: one agent on specification/standards status and browser/runtime support, one agent on real-world usage and production experiences, one agent on performance characteristics and limitations.
+
+General rules:
 - Each agent should get 2-4 sources maximum — enough to cross-reference but not so many that the agent loses focus.
 - Aim for 2-4 parallel agents depending on how many quality sources survived Phase 2.
+- Always include at least one agent whose sources are primarily independent (non-vendor) to ensure the synthesis has a bias-checked foundation.
 
 **Prompt each Researcher subagent with:**
 
