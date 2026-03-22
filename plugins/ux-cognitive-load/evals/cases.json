@@ -1,0 +1,90 @@
+[
+  {
+    "id": "explicit-ux-audit-form",
+    "input": "/ux-audit src/components/CheckoutForm.tsx",
+    "expected_trigger": true,
+    "context": {
+      "files": ["src/components/CheckoutForm.tsx"],
+      "description": "User explicitly invokes ux-audit on a checkout form component"
+    },
+    "rubric": "Should trigger ux-audit skill. Should read the target file, spawn 3 parallel agents (UX Auditor, Design Advisor, Code Reviewer), and produce a unified report with summary scores, three issue tables, and priority action items. Must evaluate form field count, label quality, grouping, and progressive disclosure.",
+    "metrics": ["eval_quality", "trigger_accuracy"]
+  },
+  {
+    "id": "natural-language-audit",
+    "input": "Can you audit my checkout form at src/pages/checkout.tsx for cognitive load issues?",
+    "expected_trigger": true,
+    "context": {
+      "files": ["src/pages/checkout.tsx"],
+      "description": "User asks for cognitive load review in natural language"
+    },
+    "rubric": "Should trigger on natural language request mentioning cognitive load and a file path. Should resolve the file path, run the 3-agent pipeline, and produce the structured report. Should not require the user to rephrase using the slash command.",
+    "metrics": ["eval_quality", "trigger_accuracy"]
+  },
+  {
+    "id": "glob-pattern-audit",
+    "input": "ux audit on all my form components: src/components/forms/**",
+    "expected_trigger": true,
+    "context": {
+      "files": ["src/components/forms/LoginForm.tsx", "src/components/forms/SignupForm.tsx", "src/components/forms/ContactForm.tsx"],
+      "description": "User provides a glob pattern targeting multiple form components"
+    },
+    "rubric": "Should resolve the glob pattern to multiple files. Should audit all resolved files. Report should cover findings across all files, not just one. Each agent should analyze all files.",
+    "metrics": ["eval_quality", "trigger_accuracy"]
+  },
+  {
+    "id": "is-form-too-complex",
+    "input": "Is this form too complex for users? It has a lot of fields. Check src/views/ApplicationForm.vue",
+    "expected_trigger": true,
+    "context": {
+      "files": ["src/views/ApplicationForm.vue"],
+      "description": "User expressing concern about form complexity"
+    },
+    "rubric": "Should trigger because user is asking about UI complexity and providing a file. Should run full audit pipeline. Report should specifically address field count, chunking, and progressive disclosure since the user is concerned about 'too many fields'.",
+    "metrics": ["eval_quality", "trigger_accuracy"]
+  },
+  {
+    "id": "review-ui-usability",
+    "input": "Review the usability of our settings page — it feels overwhelming. Files are in src/pages/settings/",
+    "expected_trigger": true,
+    "context": {
+      "files": ["src/pages/settings/index.tsx", "src/pages/settings/ProfileSection.tsx", "src/pages/settings/NotificationSettings.tsx"],
+      "description": "User reports overwhelming settings page"
+    },
+    "rubric": "Should trigger on 'review usability' combined with 'overwhelming'. Should resolve the directory path into files. Report should emphasize information overload, chunking, and progressive disclosure given the user's complaint about feeling overwhelmed.",
+    "metrics": ["eval_quality", "trigger_accuracy"]
+  },
+  {
+    "id": "accessibility-check-negative",
+    "input": "Run an accessibility audit on my site for WCAG AA compliance",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "User wants a general WCAG compliance audit, not cognitive load specifically"
+    },
+    "rubric": "Should NOT trigger. This is a general accessibility compliance request, not a cognitive load audit. The skill covers some WCAG cognitive guidelines, but a full WCAG AA audit is a different scope.",
+    "metrics": ["trigger_accuracy"]
+  },
+  {
+    "id": "fix-css-negative",
+    "input": "Fix the CSS layout bug in my navigation component at src/components/Nav.tsx",
+    "expected_trigger": false,
+    "context": {
+      "files": ["src/components/Nav.tsx"],
+      "description": "User wants a CSS bug fixed, not an audit"
+    },
+    "rubric": "Should NOT trigger. This is a bug fix request, not an audit or review request.",
+    "metrics": ["trigger_accuracy"]
+  },
+  {
+    "id": "performance-review-negative",
+    "input": "Review the performance of my React components — they're re-rendering too often",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "User wants a performance review, not cognitive load"
+    },
+    "rubric": "Should NOT trigger. 'Review' is present but the context is rendering performance, not UX or cognitive load.",
+    "metrics": ["trigger_accuracy"]
+  }
+]
