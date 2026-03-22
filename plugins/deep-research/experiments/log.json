@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "commit": "4c1151f9020b35515416a7b50b2ffee69387d802",
+      "hypothesis": "Add topic-type-aware search query strategies (single tech, comparison, landscape) to Phase 1",
+      "outcome": "keep",
+      "eval_quality": 0.75,
+      "trigger_accuracy": 1.0,
+      "wins": 4,
+      "losses": 0,
+      "draws": 4,
+      "elo": 1539.35,
+      "timestamp": "2026-03-22T13:13:18.809903+00:00"
+    }
+  ]
+}
