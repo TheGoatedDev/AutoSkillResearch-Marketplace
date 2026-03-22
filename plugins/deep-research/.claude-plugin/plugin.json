@@ -1,0 +1,5 @@
+{
+  "name": "deep-research",
+  "description": "Multi-phase deep research pipeline that discovers, validates, and synthesizes information from many sources into a comprehensive report",
+  "version": "1.0.0"
+}

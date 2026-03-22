@@ -1,0 +1,90 @@
+[
+  {
+    "id": "webtransport-maturity",
+    "input": "deep research on the current state of WebTransport API — I'm trying to figure out if it's mature enough to replace WebSockets in a production app that needs bidirectional streaming with low latency",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User evaluating WebTransport for production use"
+    },
+    "rubric": "Should ask output preference (inline vs file), spawn Researcher subagent for wide discovery, score and rank sources on recency/authority/relevance/independence, run parallel deep-dive agents, and produce a structured report with executive summary, themed findings, contradictions section, and source table. Must cover spec status, browser support, WebSocket comparison, and production readiness.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "ai-code-review-landscape",
+    "input": "I need a full report on how different companies are implementing AI-powered code review in their CI/CD pipelines — what tools exist, how they compare, and what the actual developer experience is like",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User evaluating AI code review tool landscape"
+    },
+    "rubric": "Should follow the full 4-phase pipeline. Report must cover multiple tools (CodeRabbit, GitHub Copilot PR review, Qodo, etc.), CI/CD integration patterns, developer sentiment, pricing, and limitations. Must synthesize from product docs, engineering blogs, and community discussions. Vendor bias must be flagged in source scoring.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "edge-computing-comparison",
+    "input": "dive deep into Cloudflare Workers vs AWS Lambda@Edge vs Deno Deploy for edge computing in 2026 — I need to pick one for a new project that serves dynamic content globally",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User choosing an edge computing platform for a new project"
+    },
+    "rubric": "Should produce a detailed comparison organized by themes (performance, DX, pricing, limitations, ecosystem). Must validate sources for recency, include the source ranking table, and have a clear contradictions/open questions section. Vendor-published benchmarks must be flagged as such.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "research-thoroughly-phrasing",
+    "input": "research thoroughly: what are the tradeoffs between server components and client components in modern React, and how are large teams actually structuring their apps?",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User wants deep investigation into React architecture patterns"
+    },
+    "rubric": "Should trigger the full deep research pipeline despite not using the exact phrase 'deep research'. Must cover server vs client components tradeoffs, real-world architecture patterns from large teams, and synthesize across official docs, blog posts, and community discussions.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "investigate-comprehensively",
+    "input": "investigate comprehensively how companies are handling database migrations at scale — I keep hearing about different approaches and want to understand the full landscape",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User wants comprehensive landscape analysis of database migration strategies"
+    },
+    "rubric": "Should trigger on 'investigate comprehensively'. Must cover migration tools, strategies (blue-green, expand-contract, shadow), real-world case studies, and common pitfalls. Report should cross-reference sources and flag where practices differ by database type or scale.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-simple-lookup",
+    "input": "what's the default port for PostgreSQL?",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "Simple factual question that doesn't need deep research"
+    },
+    "rubric": "Should NOT trigger deep research. This is a simple factual lookup that can be answered directly without a multi-phase research pipeline.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-docs-lookup",
+    "input": "how do I configure ESLint flat config for a TypeScript project?",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "Documentation lookup, not deep research"
+    },
+    "rubric": "Should NOT trigger deep research. This is a documentation/how-to question better served by a docs lookup or direct answer, not a multi-source research report.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-code-task",
+    "input": "refactor this function to use async/await instead of callbacks",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "Code modification task"
+    },
+    "rubric": "Should NOT trigger deep research. This is a direct code modification task with no research component.",
+    "metrics": ["eval_quality"]
+  }
+]
