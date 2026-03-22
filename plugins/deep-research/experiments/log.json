@@ -49,6 +49,19 @@
       "elo": 1540,
       "reason": "eval_quality regressed from 0.8125 to 0.6875; contamination \u2014 installed plugin loaded same version for both candidate and champion",
       "timestamp": "2026-03-22T15:25:38.981453+00:00"
+    },
+    {
+      "commit": "615deaf",
+      "hypothesis": "Add explicit negative trigger examples to skill description",
+      "outcome": "discard",
+      "eval_quality": 0.5,
+      "trigger_accuracy": 1.0,
+      "wins": 0,
+      "losses": 0,
+      "draws": 8,
+      "elo": 1500,
+      "reason": "No observable difference \u2014 both versions behaved identically, all draws (0.8125 \u2192 0.5)",
+      "timestamp": "2026-03-22T15:33:47.489423+00:00"
     }
   ]
 }
