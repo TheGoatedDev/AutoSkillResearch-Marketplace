@@ -29,6 +29,12 @@
       "description": "Cognitive load audit of UI code — analyzes components for Miller's Law, Hick's Law, progressive disclosure, WCAG cognitive guidelines, and common anti-patterns",
       "source": "./plugins/ux-cognitive-load",
       "category": "productivity"
+    },
+    {
+      "name": "ubiquitous-language",
+      "description": "Extract and formalize DDD-style domain terminology into a structured glossary with bounded context support, rationale, and deprecated term tracking",
+      "source": "./plugins/ubiquitous-language",
+      "category": "productivity"
     }
   ]
 }
