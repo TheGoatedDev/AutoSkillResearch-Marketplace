@@ -55,34 +55,47 @@ This skill has two modes:
 
 ## Output Format
 
-Write `ubiquitous_language.md` with this structure:
+Write `ubiquitous_language.md` following this concrete example:
 
 ```md
 # Ubiquitous Language
 
-## {Group Name}
+## Order Lifecycle
 
 | Term | Context | Definition | Rationale | Aliases to avoid |
 | --- | --- | --- | --- | --- |
-| **{Term}** | {Context} | {One sentence definition} | {Why this term was chosen} | {Comma-separated list} |
+| **Order** | Sales | A customer's request to purchase one or more items | Chosen over "purchase" — purchase implies completed payment | Purchase, transaction |
+| **Order** | Fulfillment | A directive to warehouse to pick and ship items | Same word, different bounded context | Shipment request |
+| **Invoice** | Billing | A request for payment sent to a customer after delivery | "Bill" is informal and ambiguous with legislative bills | Bill, payment request |
+
+## People
+
+| Term | Context | Definition | Rationale | Aliases to avoid |
+| --- | --- | --- | --- | --- |
+| **Customer** | Global | A person or organization that places orders | "Client" is ambiguous with API clients | Client, buyer, account |
+| **User** | Auth | An authentication identity in the system | Distinct from Customer — a User may not be a Customer | Login, account |
 
 ## Relationships
 
-- A **{Term}** ({Context}) {relationship verb} one or more **{Term}**
-- A **{Term}** ({Context}) belongs to exactly one **{Term}**
+- An **Order** (Sales) belongs to exactly one **Customer**
+- An **Order** (Sales) produces one or more **Invoices** (Billing)
+- A **User** (Auth) may or may not map to a **Customer**
 
 ## Example Dialogue
 
-> **Dev:** "{Question using precise domain terms}"
-> **Domain expert:** "{Answer clarifying boundaries between terms}"
+> **Dev:** "When a **Customer** places an **Order**, do we create the **Invoice** immediately?"
+> **Domain expert:** "No — an **Invoice** is only generated once a **Fulfillment** confirms the **Order**. A single **Order** can produce multiple **Invoices** if items ship in separate **Shipments**."
+> **Dev:** "So if a **Shipment** is cancelled before dispatch, no **Invoice** exists for it?"
+> **Domain expert:** "Exactly. The **Invoice** lifecycle is tied to the **Fulfillment**, not the **Order**."
 
 ## Flagged Ambiguities
 
-- "{word}" was used to mean both **{Term A}** and **{Term B}** — {explanation of distinction and recommendation}
+- "account" was used to mean both **Customer** and **User** — these are distinct: a **Customer** places orders, a **User** is an auth identity that may or may not represent a **Customer**.
 
 ## Deprecated Terms
 
-- `{old_term}` → use **{Canonical Term}** — {reason for deprecation}
+- `subscription` → use **Membership** — subscriptions imply recurring billing, ours are fixed-term
+- `client` → use **Customer** (domain) or **API Consumer** (technical) — "client" is ambiguous across both
 ```
 
 ### Column Definitions
