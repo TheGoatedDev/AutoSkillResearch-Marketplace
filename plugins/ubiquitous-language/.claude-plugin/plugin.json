@@ -1,0 +1,5 @@
+{
+  "name": "ubiquitous-language",
+  "description": "Extract and formalize DDD-style domain terminology into a structured glossary with bounded context support, rationale, and deprecated term tracking",
+  "version": "1.0.0"
+}
