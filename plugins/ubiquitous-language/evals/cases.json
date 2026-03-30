@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "id": "explicit-glossary-request",
+    "input": "I need to build a ubiquitous language for our e-commerce domain. We've been using 'order', 'invoice', 'shipment', and 'fulfillment' but I'm not sure if we're using them consistently.",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User wants to formalize domain terminology for an e-commerce project"
+    },
+    "rubric": "Should scan conversation for domain terms (order, invoice, shipment, fulfillment). Should grep the codebase for those terms. Should produce ubiquitous_language.md with all five columns (Term, Context, Definition, Rationale, Aliases to avoid). Should include Relationships, Example Dialogue, and Flagged Ambiguities sections. Should NOT skip the Rationale column.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "ddd-mention-trigger",
+    "input": "We're applying DDD to our billing system. Can you help me define the domain model terms?",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User mentions DDD and domain model in context of billing"
+    },
+    "rubric": "Should trigger on 'DDD' and 'domain model' mentions. Should ask clarifying questions about the billing domain or scan conversation for terms. Output must follow the five-column table format with bounded context support.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "harden-terminology",
+    "input": "We keep using 'client', 'customer', and 'account' interchangeably in our codebase. Can you help us harden our terminology?",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User has terminology inconsistency across synonyms"
+    },
+    "rubric": "Should identify client/customer/account as synonyms for overlapping concepts. Should grep codebase for all three terms. Should pick canonical terms with rationale, list others as aliases to avoid. Should populate Deprecated Terms if old terms are found in code. Must assign bounded contexts (e.g., Customer=Global domain, User=Auth context).",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "bounded-context-scenario",
+    "input": "In our system, 'account' means a billing account in the payments team and a user profile in the identity team. We need to sort this out.",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User has same term with different meanings across bounded contexts"
+    },
+    "rubric": "Should recognize this as a bounded context collision. Must produce separate rows for 'account' with different Context values (e.g., Payments vs Identity). Each row must have its own definition and rationale. Should flag this in Flagged Ambiguities section with clear recommendation.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "audit-mode",
+    "input": "/ubiquitous-language audit",
+    "expected_trigger": true,
+    "context": {
+      "files": ["evals/fixtures/sample-ubiquitous-language.md"],
+      "description": "User invokes audit mode. A ubiquitous_language.md file exists at the project root (use the fixture as a stand-in)."
+    },
+    "rubric": "Should enter audit mode. Should read the existing glossary file. Should build a search list of all canonical terms, aliases-to-avoid, and deprecated terms. Should grep the full codebase for aliases (client, buyer, account, bill, payment request, subscription) and deprecated terms. Should report findings inline with file counts. Should NOT modify the glossary file.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "audit-no-file",
+    "input": "/ubiquitous-language audit",
+    "expected_trigger": true,
+    "context": {
+      "files": [],
+      "description": "User invokes audit mode but no ubiquitous_language.md exists"
+    },
+    "rubric": "Should attempt to read ubiquitous_language.md, find it missing, and tell the user to run the default mode first. Should NOT create the file or attempt to scan the codebase.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "rerun-merge",
+    "input": "We just discussed a new concept: 'Fulfillment' means the process of picking, packing, and shipping an order. Also, 'Shipment' is a physical package dispatched to a customer. Add these to our glossary.",
+    "expected_trigger": true,
+    "context": {
+      "files": ["evals/fixtures/sample-ubiquitous-language.md"],
+      "description": "User wants to add new terms to an existing glossary (use the fixture as existing ubiquitous_language.md)"
+    },
+    "rubric": "Should read the existing glossary. Should add Fulfillment and Shipment as new terms with all five columns populated. Must NOT drop any existing terms (Order, Invoice, Customer). Should update the Example Dialogue to incorporate the new terms. Should update Relationships to include new connections.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-fix-bug",
+    "input": "Fix the null pointer exception in OrderService.java line 42",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "Direct bug fix request, not terminology work"
+    },
+    "rubric": "This is a direct bug fix request. The ubiquitous-language skill should NOT trigger.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-write-code",
+    "input": "Write a Python function that validates email addresses",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "Code generation request"
+    },
+    "rubric": "This is a code generation request. The ubiquitous-language skill should NOT trigger.",
+    "metrics": ["eval_quality"]
+  },
+  {
+    "id": "negative-general-docs",
+    "input": "Can you write API documentation for our REST endpoints?",
+    "expected_trigger": false,
+    "context": {
+      "files": [],
+      "description": "General documentation request, not domain terminology"
+    },
+    "rubric": "This is a general documentation request, not a domain terminology or DDD request. The ubiquitous-language skill should NOT trigger.",
+    "metrics": ["eval_quality"]
+  }
+]
